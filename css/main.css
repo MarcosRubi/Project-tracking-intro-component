@@ -1,0 +1,338 @@
+:root{
+--Red: hsl(0, 100%, 68%);
+--Very-Dark-Blue: hsl(230, 29%, 20%);
+--Dark-Grayish-Blue: hsl(230, 11%, 40%);
+--Grayish-Blue: hsl(231, 7%, 65%);
+--Light-Grayish-Blue: hsl(207, 33%, 95%);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 18px;
+    font-family: 'Barlow', sans-serif;
+    overflow-x: hidden;
+}
+body::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 75vh;
+    background-color: var(--Light-Grayish-Blue);
+    right: 0;
+    top: 0;
+    border-radius: 0 0 0 5rem;
+    z-index: -1;
+}
+
+h1,
+a,
+button{
+    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif;
+}
+li{
+    list-style: none;
+    display: block;
+}
+a{
+    text-decoration: none;
+}
+
+/* CLASES GLOBALES */
+.container{
+    width: 90%;
+    max-width: 1440px;
+    margin: 0 auto;
+}
+.d-flex{
+    display: flex;
+}
+.align-center{
+    align-items: center;
+}
+.jc-between{
+    justify-content: space-between;
+}
+.btn{
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+.btn-menu{
+    background-image: url(../images/icon-hamburger.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: contain;
+    transition: background-image 300ms;
+}
+
+.btn-primary{
+    background-color: var(--Red);
+    color: var(--Light-Grayish-Blue);
+    padding: 0.75rem 1.25rem;
+    border-radius: .25rem;
+    text-transform: uppercase;
+    transition: opacity 300ms;
+}
+.banner .btn-primary.visible:hover{
+    opacity: 0.7 ;
+}
+.btn-secondary{
+    color: var(--Grayish-Blue);
+    font-weight: 400;
+    text-transform: uppercase;
+    transition: color 300ms;
+}
+.btn-secondary:hover{
+    color: var(--Dark-Grayish-Blue);
+}
+.logo{
+    transition:  transform 300ms;
+}
+.logo:hover{
+    transform: scale(1.15);
+}
+
+/* ESTILOS HEADER */
+header{
+    padding: 1rem 0;
+}
+.menu{
+    position: fixed;
+    width: 90%;
+    background-color: var(--Light-Grayish-Blue);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    z-index: 99;
+    
+    opacity: 0;
+    top: 4rem;
+    pointer-events: none;
+
+    transition: all 500ms;
+}
+.menu.show-menu{
+    opacity: 1;
+    top: 5rem;
+    pointer-events: initial;
+}
+.menu .separator{
+    border: 1px solid rgba(224,224,224,1);
+    display: block;
+}
+.menu a{
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    display: block;
+    padding: 1rem 0;
+    color: var(--Very-Dark-Blue);
+    letter-spacing: 2px;
+    transition: all 300ms;
+}
+
+.menu li:last-child a{
+    color:var(--Dark-Grayish-Blue);
+}
+.menu a:hover,
+.menu a:last-child:hover{
+    color: var(--Red);
+}
+
+.menu.show-menu ~ .btn-menu{
+    background-image: url(../images/icon-close.svg);
+}
+
+/* ESTILOS BANNER */
+.banner__img{
+    margin: 3rem 0;
+    overflow-x: hidden;
+}
+.banner__img img{
+    width: 150%;
+    max-width: 47rem;
+    transform: translateX(-0.4rem);
+}
+.banner__content span:last-child{
+    letter-spacing: 3px;
+    color: var(--Grayish-Blue);
+    margin-left: 1rem;
+}
+.badge{
+    color: var(--Light-Grayish-Blue);
+    background-color: var(--Very-Dark-Blue);
+    padding: 0.2rem .5rem;
+    border-radius: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+h1{
+    font-size: 2.7rem;
+    text-transform: uppercase;
+    margin: .75rem 0;
+    color: var(--Very-Dark-Blue);
+}
+p{
+    color: var(--Dark-Grayish-Blue);
+    padding-right: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+footer p{
+    padding: 1rem 0;
+    font-size: .9rem;
+    text-align: center;
+}
+footer a:hover{
+    color: var(--Red);
+}
+
+/* ANIMACIONES DE CARGA */
+header,
+.banner span,
+h1,
+.banner p,
+.banner .btn,
+.banner__img,
+footer{
+    opacity: 0;
+}
+header.visible{
+    opacity: 1;
+    animation: toBottom .5s linear;
+}
+.banner span.visible:first-child{
+    opacity: 1;
+    animation: visible .5s linear;
+}
+.banner span.visible:last-child{
+    opacity: 1;
+    animation: visible .75s linear;
+}
+h1.visible{
+    opacity: 1;
+    animation: visible 1s linear;
+}
+.banner p.visible{
+    opacity: 1;
+    animation: visible 1.25s linear;
+}
+.banner .btn-primary.visible{
+    opacity: 1;
+    animation: visible 1.5s linear;
+}
+.banner .btn-secondary.visible{
+    opacity: 1;
+    animation: visible 1.75s linear;
+}
+.banner__img.visible{
+    opacity: 1;
+    animation: visible 2s linear;
+}
+footer.visible{
+    opacity: 1;
+    animation: visible .5s linear;
+}
+@keyframes visible {
+    0%, 40%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+
+@keyframes toBottom {
+    0%{
+        transform: translateY(-10rem);
+    }
+    100%{
+        transform: translateY(0rem);
+    }
+}
+
+@media (min-width:768px) {
+    body{
+        overflow-x: hidden;
+    }
+    body::after{
+        width: 50%;
+    }
+
+    .menu{
+        position: relative;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        z-index: 99;
+    
+        opacity: 1;
+        top: 0rem;
+        pointer-events: initial;
+    }
+    .menu ul{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .menu a{
+        display: inline-block;
+        padding: 1rem;
+    }
+    .menu.show-menu{
+        top: 0rem;
+    }
+    .btn-menu{
+        display: none;
+    }
+
+    .banner{
+        display: flex;
+        align-items: center;
+        width: 90%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    .banner__content{
+        order:-1;        
+    }
+    .banner__img{
+        overflow-x: visible;
+    }
+    .btn{
+        font-size: 1rem;
+    }
+}
+@media (min-width:1024px) {
+    .btn{
+        font-size: 1.2rem;
+    }
+    .banner__content{
+        flex-basis: 75%;
+    }
+    footer p{
+        font-size: 1rem;
+    }
+}
+@media (min-width:1200px) {
+    h1{
+        font-size: 5rem;
+    }
+    .menu .separator{
+        margin: 0 1rem;
+    }
+    .banner p{
+        max-width: 22rem;
+        font-size: 1.25rem;
+    }
+    .banner__img img{
+        max-width: none;
+    }
+
+}
